@@ -1,0 +1,41 @@
+html {
+    background-color: rgba(142, 157, 59, 0.3);
+}
+
+header {
+    background-color: rgba(113, 30, 30, 0.731);
+    width: 100vw;
+    position: relative;
+    padding: 10px;
+}
+
+header h1 { 
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 0px 4px 18px 7px black;
+}
+
+header ul a {
+    color:black;
+}
+
+header ul a:hover {
+    font-size: 17px;
+    transition: 0.3s;
+    color:white;
+}
+
+.navItem {
+    list-style: none;
+    display: flex;
+    margin: 12px 20px;
+    padding: 10px;
+}
+
+main {
+    padding: 50px;
+    background-color: rgba(142, 157, 59, 0.3);
+}
