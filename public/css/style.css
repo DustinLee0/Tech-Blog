@@ -28,6 +28,11 @@ header ul a:hover {
     color:white;
 }
 
+main {
+    padding: 50px;
+    background-color: rgba(142, 157, 59, 0.3);
+}
+
 .navItem {
     list-style: none;
     display: flex;
@@ -35,7 +40,43 @@ header ul a:hover {
     padding: 10px;
 }
 
-main {
-    padding: 50px;
+.post-card {
     background-color: rgba(142, 157, 59, 0.3);
+    border: 4mm ridge rgba(113, 30, 30, 0.731);
+}
+
+.post-header {
+    background-color: rgba(113, 30, 30, 0.731);
+    color: white;
+    padding: 10px;
+}
+
+.create-card {
+    outline: 0.5rem solid rgb(0, 0, 0);
+    margin-top: 50px;
+}
+
+.create-card h3 {
+    background-color: black;
+    padding: 10px;
+    color: white;
+}
+
+.form-content {
+    
+    height: fit-content;
+}
+
+#signUp-btn {
+    position: relative;
+    left: 40px;
+}
+
+#login-signUp-form {
+    width: 75%;
+    margin: auto;
+}
+
+textarea {
+    min-height: 200px;
 }
