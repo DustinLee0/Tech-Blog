@@ -33,4 +33,4 @@ Comments.belongsTo(Posts, {
 
 
 
-module.exports = { User, saveConfig };
+module.exports = { User, Posts, Comments };
