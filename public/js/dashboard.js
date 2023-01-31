@@ -16,12 +16,10 @@ form.addEventListener('submit', createPost);
 function createPost(e) {
     e.preventDefault(); 
     let event = e.target;
-    console.log(event);
-    
     
     let title = document.getElementById('title-input');
     let content = document.getElementById('content-input');
-    console.log('submit works');
+    console.log('CREATE POST: ');
     console.log("Title: ", title.value)
     console.log("Content: ", content.value)  
 
