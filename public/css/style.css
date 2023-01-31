@@ -67,11 +67,6 @@ main {
     height: fit-content;
 }
 
-#signUp-btn {
-    position: relative;
-    left: 40px;
-}
-
 #login-signUp-form {
     width: 75%;
     margin: auto;
@@ -79,4 +74,9 @@ main {
 
 textarea {
     min-height: 200px;
+}
+
+form label {
+    font-size: larger;
+    margin-top: 10px;
 }

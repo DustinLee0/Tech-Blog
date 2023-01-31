@@ -1,11 +1,15 @@
-<form class="create-card mt-5" id="login-signUp-form">
+<div class="create-card mt-5" id="login-signUp-form">
     <h3 id="login-header">Login</h3>
-    <div class="p-3">
-        <h4>Username</h4>
+    <form class="p-3">
+        <label>Username</label>
         <input type="text" class="form-control" id="user" placeholder="Username">
-        <h4>Password</h4>
-        <input type="password " class="form-control form-content" id="password" placeholder="Password">
-        <button type="submit" class="btn btn-primary btn-sm mt-4" id="login-btn">Login</button>
-        <button type="button" class="btn btn-secondary btn-sm mt-4" id="signUp-btn">Create an Account</button>
-    </div>
-</form>
+        <label>Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input type="button" value="Sign Up" class="btn btn-primary btn-sm mt-2 d-none" id="signUp-btn">
+        <div id="buttons">
+            <input type="button" value="Login" class="btn btn-primary btn-sm mt-4" id="login-btn"><br><br>
+            <a>Don't have an account? Create one here</a><br>
+            <input type="button" value="Create New Account" class="btn btn-secondary btn-sm mt-2" id="new-user-btn">
+        </div>
+    </form>
+</div>
