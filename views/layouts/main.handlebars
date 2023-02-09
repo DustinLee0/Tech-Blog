@@ -18,16 +18,25 @@
     <ul class="list-group d-flex flex-row justify-content-evenly">
       <li class="navItem"><a href="/">Home</a></li>
       <li class="navItem"><a href="/dashboard">Dashboard</a></li>
+
+      {{#if loggedIn}}
+      <li class="navItem" id="logout"><a href="/login">Logout</a></li>
+      {{else}}
       <li class="navItem"><a href="/login">Login</a></li>
+      {{/if}}
     </ul>
   </header>
 
   <main>
     {{{body}}}
   </main>
-  
+
 </body>
 
 <script src="/js/dashboard.js"></script>
 <script src="/js/login.js"></script>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
+
 </html>
