@@ -9,29 +9,62 @@ createNewUserBtn.addEventListener('click', (e) => {
 
     const loginHeader = document.querySelector('#login-header');
     const buttons = document.querySelector('#buttons');
+    let user = document.querySelector('#user');
+    let password = document.querySelector('#password');
 
+    user.value = '';
+    password.value = '';
     loginHeader.innerHTML = 'Sign Up';
     signUpBtn.classList.remove('d-none');
-
-    while (buttons.children) buttons.removeChild(buttons.children[0]);
+    buttons.classList.add('d-none');
+    // while (buttons.children) buttons.removeChild(buttons.children[0]);
 });
 
-loginBtn.addEventListener('click', (e) => {
+// login user
+loginBtn.addEventListener('click', async (e) => {
     e.preventDefault()
     console.log('LOGIN BTN EVENT LISTENER')
 
-    let user = document.querySelector('#user');
-    let password = document.querySelector('#password');
-    console.log('USER: ', user.value);
-    console.log('PASSWORD: ', password.value);
+    let username = document.querySelector('#user').value;
+    let password = document.querySelector('#password').value;
+    console.log('USER: ', username);
+    console.log('PASSWORD: ', password);
+
+    if (username && password) {
+        const response = await fetch('/login/login-user', {
+          method: 'POST',
+          body: JSON.stringify({ username, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+          } else {
+            alert('Failed to log in.');
+          }
+    }
 });
 
-signUpBtn.addEventListener('click', (e) => {
+// create new user
+signUpBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    console.log('signup btn works');
 
-    let user = document.querySelector('#user');
-    let password = document.querySelector('#password');
-    console.log('USER: ', user.value);
-    console.log('PASSWORD: ', password.value);
-})
+    let username = document.querySelector('#user').value.trim();
+    let password = document.querySelector('#password').value.trim();
+    // console.log('USER: ', username);
+    // console.log('PASSWORD: ', password);
+
+    if (username && password) {
+        const response = await fetch('/login/create', {
+            method: 'POST',
+            body: JSON.stringify({ username: username, password: password }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert('Failed to sign up.');
+        }
+    }
+});
