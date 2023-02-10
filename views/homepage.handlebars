@@ -1,16 +1,13 @@
 <section>
-    {{#each post}}
-    <div class="post-card">
+    {{#each posts}}
+    <div class="post-card my-5">
         <h3 class="post-header">{{this.title}}</h3>
         <p class="p-3">{{this.content}}</p>
+        <footer class="p-3">
+            <p>Written by: {{this.user.username}}</p>
+            <p>Date created: {{this.createdAt}}</p>
+        </footer>
     </div>
     {{/each}}
-
-{{!-- test --}}
-    <div class="post-card">
-        <h3 class="post-header">test title</h3>
-        <p class="p-3">test content</p>
-    </div>
-{{!-- test --}}
 
 </section>

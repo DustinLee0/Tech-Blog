@@ -1,14 +1,24 @@
-{{!-- <div class="d-flex justify-content-center" id="add-post-btn"> --}}
+{{!-- conditionally render dashboard only if logged in --}}
+{{#if loggedIn}}
+    {{!-- {{#each post}}
+        <div class="post-card">
+            <h3 class="post-header">{{this.title}}</h3>
+            <p class="p-3">{{this.content}}</p>
+        </div>
+    {{/each}} --}}
+    <h5>logged in</h5>
     <button type="button" class="btn btn-outline-dark mt-5" id="add-post-btn">Create New Post</button>
-{{!-- </div> --}}
 
-<form class="create-card d-none" id="form">
-    <h3 id="create-header">Create New Post</h3>
-    <div class="p-3">
-        <h4>Title</h4>
-        <input type="text" class="form-control" id="title-input" placeholder="Title">
-        <h4>Content</h4>
-        <textarea class="form-control form-content" id="content-input" placeholder="Content"></textarea>
-        <button type="submit" class="btn btn-secondary btn-sm mt-4" id="create-post-btn">Create Post</button>
-    </div>
-</form>
+    <form class="create-card d-none" id="form">
+        <h3 id="create-header">Create New Post</h3>
+        <div class="p-3">
+            <h4>Title</h4>
+            <input type="text" class="form-control" id="title-input" placeholder="Title">
+            <h4>Content</h4>
+            <textarea class="form-control form-content" id="content-input" placeholder="Content"></textarea>
+            <button type="submit" class="btn btn-secondary btn-sm mt-4" id="create-post-btn">Create Post</button>
+        </div>
+    </form>
+    {{else}}
+    <h4>Must be <a href='/user'>logged</a> in to view dashboard.</h4>
+{{/if}}

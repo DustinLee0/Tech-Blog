@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Posts, Comments, User } = require('../models')
+const { auth } = require('../utils/helpers');
 
 router.get('/', async (req,res)=>{
     try{
@@ -15,7 +16,7 @@ router.get('/', async (req,res)=>{
           const posts = dbPosts.map((post) =>
           post.get({ plain: true })
         );
-
+          // console.log('SERIALIZED POSTS: ', posts);
 
         res.render('homepage', {
             posts,
