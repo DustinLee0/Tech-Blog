@@ -12,18 +12,36 @@ addPostBtn.addEventListener('click', (e) => {
 
 form.addEventListener('submit', createPost);
 
-//  saves post to database
-function createPost(e) {
-    e.preventDefault(); 
-    let event = e.target;
-    
-    let title = document.getElementById('title-input');
-    let content = document.getElementById('content-input');
-    console.log('CREATE POST: ');
-    console.log("Title: ", title.value)
-    console.log("Content: ", content.value)  
+//  create new post and save to database
+async function createPost(e) {
+    e.preventDefault();
+
+    let title = document.getElementById('title-input').value.trim();
+    let content = document.getElementById('content-input').value.trim();
+    // console.log('CREATE POST: ');
+    // console.log("Title: ", title)
+    // console.log("Content: ", content)
 
 
     addPostBtn.classList.remove('d-none');
     form.classList.add('d-none');
+
+    if (title && content) {
+        const response = await fetch('/dashboard/create-post', {
+            method: 'POST',
+            body: JSON.stringify({
+                title: title,
+                content: content,
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace("/dashboard");
+            console.log(response);
+        } else {
+            alert(response.statusText);
+        }
+
+    }
 }

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Posts, Comments, User } = require('../models')
 
+// render login page
 router.get('/', (req, res) => {
     try {
         if (req.session.loggedIn) {
@@ -26,6 +27,8 @@ router.post('/create', async (req, res) => {
         //create session to track if logged in
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.user_id = dbCreateUser.id;
+            req.session.username = req.body.username;
 
             res.status(200).json(dbCreateUser);
             console.log('New user added to db');
@@ -37,7 +40,7 @@ router.post('/create', async (req, res) => {
 });
 
 // post route -> login with created user
-router.post('/login-user', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
             where: {
@@ -61,6 +64,8 @@ router.post('/login-user', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.user_id = dbUserData.id;
+            req.session.username = req.body.username;
 
             res.status(200).json({ message: 'You are now logged in!' });
         });
@@ -71,6 +76,7 @@ router.post('/login-user', async (req, res) => {
     }
 });
 
+// post route -> logout
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {

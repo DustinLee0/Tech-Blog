@@ -31,7 +31,7 @@ loginBtn.addEventListener('click', async (e) => {
     console.log('PASSWORD: ', password);
 
     if (username && password) {
-        const response = await fetch('/login/login-user', {
+        const response = await fetch('/user/login', {
           method: 'POST',
           body: JSON.stringify({ username, password }),
           headers: { 'Content-Type': 'application/json' },
@@ -55,7 +55,7 @@ signUpBtn.addEventListener('click', async (e) => {
     // console.log('PASSWORD: ', password);
 
     if (username && password) {
-        const response = await fetch('/login/create', {
+        const response = await fetch('/user/create', {
             method: 'POST',
             body: JSON.stringify({ username: username, password: password }),
             headers: { 'Content-Type': 'application/json' },
