@@ -23,12 +23,12 @@ createNewUserBtn.addEventListener('click', (e) => {
 // login user
 loginBtn.addEventListener('click', async (e) => {
     e.preventDefault()
-    console.log('LOGIN BTN EVENT LISTENER')
+    // console.log('LOGIN BTN EVENT LISTENER')
 
     let username = document.querySelector('#user').value;
     let password = document.querySelector('#password').value;
-    console.log('USER: ', username);
-    console.log('PASSWORD: ', password);
+    // console.log('USER: ', username);
+    // console.log('PASSWORD: ', password);
 
     if (username && password) {
         const response = await fetch('/user/login', {

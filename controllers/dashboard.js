@@ -1,12 +1,26 @@
 const router = require('express').Router();
 const { Posts, Comments, User } = require('../models')
+const auth = require('../utils/helpers');
 
 // render dashboard page
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
+        const getPosts = await Posts.findAll({
+            where: { user_id: req.session.user_id },
+        });
+
+        const posts = getPosts.map((post) =>
+            post.get({ plain: true })
+        );
+        console.log('POSTS: ', posts)
+        console.log('loggedIn: ', req.session.loggedIn);
+        console.log('username: ', req.session.username);
+
 
         res.render('dashboard', {
+            posts,
             loggedIn: req.session.loggedIn,
+            myUsername: req.session.username,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -14,7 +28,7 @@ router.get('/', async (req, res) => {
 });
 
 // create a post
-router.post('/create-post', async (req, res) => {
+router.post('/create-post', auth, async (req, res) => {
     try {
         //  create user object
         const dbCreatePost = await Posts.create({
@@ -22,7 +36,7 @@ router.post('/create-post', async (req, res) => {
             content: req.body.content,
             user_id: req.session.user_id,
         });
-        console.log('sessionid: ', req.session.user_id)
+        // console.log('sessionid: ', req.session.user_id)
 
         res.status(201).json(dbCreatePost);
     } catch (err) {
@@ -31,30 +45,4 @@ router.post('/create-post', async (req, res) => {
     }
 });
 
-router.get('/getposts', async (req, res) => {
-    try {
-        // get all user posts
-        const getPosts = await Posts.findAll({
-            // where: {
-            //     user_id: req.session.user_id
-            // }
-            // include: {
-            //     Model: Comments, include: {
-            //         Model: User, attributes: ["username"]
-            //     }
-            // },
-            // { Model: User, attributes: ['username'] }]
-        });
-
-        const posts = getPosts.map((post) =>
-            post.get({ plain: true })
-        );
-        console.log('POSTS: ', posts)
-
-            console.log('session id: ', req.session.user_id);
-
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
 module.exports = router;
