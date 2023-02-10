@@ -17,11 +17,10 @@ router.get('/', async (req,res)=>{
           post.get({ plain: true })
         );
           // console.log('SERIALIZED POSTS: ', posts);
+          // console.log('loggedIn: ', req.session.loggedIn);
+          // console.log('userid: ', req.session.user_id);
 
-        res.render('homepage', {
-            posts,
-            loggedIn: req.session.loggedIn,
-        });
+        res.render('homepage', { posts });
     }catch(err){
         res.status(500).json(err);
     }
