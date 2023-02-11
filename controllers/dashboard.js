@@ -3,24 +3,34 @@ const { Posts, Comments, User } = require('../models')
 const auth = require('../utils/helpers');
 
 // render dashboard page
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const getPosts = await Posts.findAll({
-            where: { user_id: req.session.user_id },
+        let getUserPosts = await Posts.findAll({
+            where: {
+                user_id: req.session.user_id
+            }
         });
+        
+        if (!getUserPosts) {
+            res.render('dashboard', {
+                loggedIn: req.session.loggedIn,
+                myUsername: req.session.username
+            });
+        }
 
-        const posts = getPosts.map((post) =>
+        let posts = getUserPosts.map((post) =>
             post.get({ plain: true })
         );
-        console.log('POSTS: ', posts)
+        console.log('SERIALIZED POSTS: ', posts)
         console.log('loggedIn: ', req.session.loggedIn);
         console.log('username: ', req.session.username);
+        console.log('id: ', req.session.user_id);
 
 
         res.render('dashboard', {
             posts,
             loggedIn: req.session.loggedIn,
-            myUsername: req.session.username,
+            myUsername: req.session.username
         });
     } catch (err) {
         res.status(500).json(err);

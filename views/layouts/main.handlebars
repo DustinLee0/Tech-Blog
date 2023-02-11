@@ -20,9 +20,9 @@
       <li class="navItem"><a href="/dashboard">Dashboard</a></li>
 
       {{#if loggedIn}}
-      <li class="navItem" id="logout"><a href="/user">Logout</a></li>
+      <li class="navItem" id="logout"><a href="/users">Logout</a></li>
       {{else}}
-      <li class="navItem" id="login"><a href="/user">Login</a></li>
+      <li class="navItem" id="login"><a href="/users">Login</a></li>
       {{/if}}
     </ul>
   </header>
@@ -33,6 +33,7 @@
 
 </body>
 
+<script src="/js/homepage.js"></script>
 <script src="/js/dashboard.js"></script>
 <script src="/js/login.js"></script>
 {{#if loggedIn}}
