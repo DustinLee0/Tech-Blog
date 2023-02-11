@@ -33,7 +33,7 @@ main {
     background-color: rgba(142, 157, 59, 0.3);
 }
 
-footer {
+.footer {
     font-size: small;
     position: relative;
     left: 20px;
