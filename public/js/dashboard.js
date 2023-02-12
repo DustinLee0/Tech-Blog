@@ -1,11 +1,10 @@
+// display create post form
 const addPostBtn = document.getElementById('add-post-btn');
+// create post form
 const form = document.getElementById('form');
 
 // display create new post form
 addPostBtn.addEventListener('click', (e) => {
-    let event = e.target;
-    console.log(event);
-
     addPostBtn.classList.add('d-none');
     form.classList.remove('d-none');
 });
@@ -18,10 +17,8 @@ async function createPost(e) {
 
     let title = document.getElementById('title-input').value.trim();
     let content = document.getElementById('content-input').value.trim();
-    // console.log('CREATE POST: ');
     // console.log("Title: ", title)
     // console.log("Content: ", content)
-
 
     addPostBtn.classList.remove('d-none');
     form.classList.add('d-none');
@@ -37,11 +34,11 @@ async function createPost(e) {
         });
 
         if (response.ok) {
-            document.location.replace("/dashboard");
+            document.location.reload();
             console.log(response);
         } else {
-            alert(response.statusText);
+            alert('Failed to create post');
+            return;
         }
-
     }
 }

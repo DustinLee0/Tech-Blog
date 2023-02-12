@@ -1,4 +1,4 @@
-const readMoreBtn = document.querySelectorAll('button');
+const readMoreBtn = document.querySelectorAll('#read-more');
 
 readMoreBtn.forEach(button => {
     button.addEventListener('click', async (e) => {
