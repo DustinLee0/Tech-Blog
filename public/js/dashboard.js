@@ -2,6 +2,7 @@
 const addPostBtn = document.getElementById('add-post-btn');
 // create post form
 const form = document.getElementById('form');
+const deleteBtn = document.querySelectorAll('#delete');
 
 // display create new post form
 addPostBtn.addEventListener('click', (e) => {
@@ -42,3 +43,23 @@ async function createPost(e) {
         }
     }
 }
+
+deleteBtn.forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+        let event = e.target;
+        let postId = event.parentElement.getAttribute('id');
+        console.log('postid: ', postId);
+
+        const response = await fetch(`/dashboard/delete/${postId}`, {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            document.location.replace('/dashboard');
+          } else {
+            alert('Failed to delete post');
+          }
+
+    })
+
+})
