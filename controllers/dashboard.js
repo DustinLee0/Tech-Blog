@@ -25,9 +25,10 @@ router.get('/', async (req, res) => {
                 loggedIn: req.session.loggedIn,
                 myUsername: req.session.username
             });
+            return;
         }
 
-        // res.render('dashboard');
+        res.render('dashboard');
     } catch (err) {
         res.status(500).json(err);
     }
