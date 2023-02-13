@@ -26,11 +26,11 @@ To invoke the app navigate to the corresponding directory then run:
 node server.js
 ```  
 Once the server has started, navigate to your browser and enter in:  
-[http://localhost:3001](http://localhost:3001)  to navigate to the homepage,  
+[http://localhost:3001](http://localhost:3001) to navigate to the homepage,  
   
 OR
   
-  
+[https://cms-tech-blog-app.herokuapp.com/](https://cms-tech-blog-app.herokuapp.com/)
 
 
 ![homepage](./Assets/homepage%20Large.jpeg)
