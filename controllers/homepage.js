@@ -51,7 +51,7 @@ router.get('/single-post/:id', async (req, res) => {
 
     const post = singlePostSrch.get({ plain: true });
     console.log('serialized data: ', post)
-    console.log('comments: ', post.comments)
+    // console.log('comments: ', post.comments)
 
     res.render('single-post', {
       post,
