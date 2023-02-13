@@ -31,20 +31,20 @@ router.get('/single-post/:id', async (req, res) => {
     const singlePostSrch = await Posts.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ['username'],
-        },
-        {
           model: Comments,
-          where: {
-            posts_id: req.params.id,
-          },
+          // where: {
+          //   posts_id: req.params.id,
+          // },
           include: [
             {
               model: User,
               attributes: ['username'],
             }
           ]
+        },
+        {
+          model: User,
+          attributes: ['username'],
         },
       ],
     });
