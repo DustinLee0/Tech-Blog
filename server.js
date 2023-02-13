@@ -14,7 +14,7 @@ const routes = require('./controllers');
 const PORT = process.env.PORT || 3001;
 // set up session var
 const sess = {
-  secret: process.env.SESSION_PASS,
+  secret: 'password',
   cookie: {
     maxAge: 300000,
     httpOnly: true,
@@ -37,7 +37,6 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'somevalue' }));
 
 app.use(routes);
 
