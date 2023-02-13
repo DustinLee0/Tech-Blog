@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
             });
         }
 
-        res.render('dashboard');
+        // res.render('dashboard');
     } catch (err) {
         res.status(500).json(err);
     }
