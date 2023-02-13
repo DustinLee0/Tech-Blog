@@ -1,0 +1,27 @@
+<button type="button" class="btn btn-outline-dark mt-5" id="add-comment">Add New Comment</button>
+
+<div class="post-card my-5 p-3 d-none" id="comment">
+    <h3 id="user-id" data-number="{{user_id}}">{{username}}'s Comment</h3>
+    <input type="text" class="form-control" id="comment-value" placeholder="Comments go here">
+    <button class="m-3 btn btn-outline-dark" id="comment-btn">Add Comment</button>
+</div>
+
+
+<div class="post-card my-5" id="{{post.id}}">
+    <h3 class="post-header" id="post-title">{{post.title}}</h3>
+    <p class="p-3" id="post-content">{{post.content}}</p>
+    <footer class="p-3">
+        <p>Written By: {{post.user.username}}</p>
+        <p>Date created: {{post.createdAt}}</p>
+    </footer>
+</div>
+
+<h5>Comments</h5>
+{{#each post.comments}}
+    {{> comments}}
+{{else}}
+    <h3>No posts</h3>
+{{/each}}
+
+
+<script src="/js/comment.js"></script>
